@@ -11,6 +11,7 @@ npm install --save event-sender
 
 Initialize your `EventSender` object with an HTTP response object (the ExpressJS `res` parameter, for instance):
 ```js
+var EventSender = require('event-sender');
 var eventSender = new EventSender(response);
 ```
 
