@@ -24,8 +24,8 @@ eventSender.sendJson('message', { author: 'cGuille', content: 'Hope you like it!
 ```
 
 Here are the signatures of these methods:
-- EventSender#send(eventName, content);
-- EventSender#sendJson(eventName, content);
+- `EventSender#send(eventName, content);`.
+- `EventSender#sendJson(eventName, content);`.
  
 The JSON version will just stringify the content before the event is sent.
 
