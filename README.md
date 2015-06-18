@@ -16,10 +16,10 @@ var eventSender = new EventSender(response);
 
 Then you can use the its `send()` or `sendJson()` method to send events to the client:
 ```js
-# Send plain text to the client:
+// Send plain text to the client:
 eventSender.send('greeting', 'Hello, World!');
 
-# Send JSON data to the client:
+// Send JSON data to the client:
 eventSender.sendJson('message', { author: 'cGuille', content: 'Hope you like it!' });
 ```
 
