@@ -15,7 +15,7 @@ var EventSender = require('event-sender');
 var eventSender = new EventSender(response);
 ```
 
-Then you can use the its `send()` or `sendJson()` method to send events to the client:
+Then you can use its `send()` or `sendJson()` method to send events to the client:
 ```js
 // Send plain text to the client:
 eventSender.send('greeting', 'Hello, World!');
