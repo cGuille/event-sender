@@ -1,6 +1,6 @@
 {
   "name": "event-sender",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Provide an EventSender prototype to send Server Sent Events (sse), meant to be consumed by the EventSource interface.",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,9 @@
     "EventSender"
   ],
   "author": "@cGuille <cguille.dev@gmail.com>",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/cGuille/event-sender.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cGuille/event-sender.git"
   },
   "license": "MIT"
 }
