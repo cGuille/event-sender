@@ -12,23 +12,22 @@ npm install --save event-sender
 Initialize your `EventSender` object with an HTTP response object (the ExpressJS `res` parameter, for instance):
 ```js
 var EventSender = require('event-sender');
-var eventSender = new EventSender(response);
+var event = new EventSender(response);
 ```
 
-Then you can use its `send()` or `sendJson()` method to send events to the client:
+Then you can use its `send()` method to send events to the client:
 ```js
 // Send plain text to the client:
-eventSender.send('greeting', 'Hello, World!');
+event.send({ name: 'greeting', data: 'Hello, World!\nHow the hell are yer?!' });
 
 // Send JSON data to the client:
-eventSender.sendJson('message', { author: 'cGuille', content: 'Hope you like it!' });
+event.send({
+ name: 'direct-message',
+ data: { author: 'cGuille', content: 'Hope you like it!' }
+});
 ```
-
-Here are the signatures of these methods:
-- `EventSender#send(eventName, content);`.
-- `EventSender#sendJson(eventName, content);`.
  
-The JSON version will just stringify the content before the event is sent.
+Non string data are JSON stringified.
 
 ## Licence
 
