@@ -5,12 +5,17 @@ function EventSender(httpResponse) {
   this.httpResponse.setHeader('Content-Type', 'text/event-stream');
 }
 
-EventSender.prototype.send = function EventSender_send(eventName, content) {
-  this.httpResponse.write('event: ' + eventName + '\n' + dataize(content) + '\n\n');
-};
-
-EventSender.prototype.sendJson = function EventSender_sendJson(eventName, content) {
-  this.send(eventName, JSON.stringify(content));
+EventSender.prototype.send = function EventSender_send(event) {
+  if (typeof(event.data) === 'undefined') {
+    event.data = '';
+  } else if (typeof(event.data) !== 'string') {
+    event.data = JSON.stringify(event.data);
+  }
+  this.httpResponse.write(
+    (event.name ? 'event: ' + event.name + '\n' : '') +
+    dataize(event.data) +
+    '\n\n'
+  );
 };
 
 function dataize(string) {
