@@ -15,6 +15,6 @@ EventSender.prototype.sendJson = function EventSender_sendJson(eventName, conten
 
 function dataize(string) {
   return string.split('\n').map(function (line) {
-    return 'data: ' + line + '\n';
-  });
+    return 'data: ' + line;
+  }).join('\n');
 }
