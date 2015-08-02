@@ -29,6 +29,13 @@ event.send({
  
 Non string data are JSON stringified.
 
+It is also possible to provide a callback which will be called when the data have been sent to the client :
+```js
+event.send(eventObj, function () {
+ console.log('The event has been flushed to the network.');
+});
+```
+
 ## Licence
 
 This small library is distributed under the MIT licence.
