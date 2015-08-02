@@ -11,21 +11,24 @@ function EventSender(httpResponse) {
   this.httpResponse.setHeader('Content-Type', 'text/event-stream');
 }
 
-EventSender.prototype.send = function EventSender_send(event) {
+EventSender.prototype.send = function EventSender_send(event, cb) {
   if (typeof(event.data) === 'undefined') {
     event.data = '';
   } else if (typeof(event.data) !== 'string') {
     event.data = JSON.stringify(event.data);
   }
-  this.httpResponse.write(
-    (event.name ? 'event: ' + event.name + '\n' : '') +
-    dataize(event.data) +
-    '\n\n'
-  );
+  return this.httpResponse.write(format(event), 'utf8', cb);
 };
 
-function dataize(string) {
-  return string.split('\n').map(function (line) {
-    return 'data: ' + line;
-  }).join('\n');
+function format(event) {
+  var lines = [];
+
+  if (event.name) {
+    lines.push('event: ' + event.name);
+  }
+  lines.push.apply(lines, event.data.split('\n').map(function (dataLine) {
+    return 'data: ' + dataLine;
+  }));
+
+  return lines.join('\n') + '\n\n';
 }
