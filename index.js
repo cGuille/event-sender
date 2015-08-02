@@ -1,6 +1,12 @@
 module.exports = EventSender;
 
+var assert = require('assert');
+
 function EventSender(httpResponse) {
+  assert(httpResponse);
+  assert.equal(typeof(httpResponse.setHeader), 'function', "The HTTP response must have a #setHeader() method.");
+  assert.equal(typeof(httpResponse.write), 'function', "The HTTP response must have a #write() method.");
+
   this.httpResponse = httpResponse;
   this.httpResponse.setHeader('Content-Type', 'text/event-stream');
 }
